@@ -8,9 +8,21 @@ public class ShellSorting {
 
         int[] numbers = {10, 9, 8, 7, 6, 5, 4, 3, 2, 1};
 
-        int gap = numbers.length / 2;
+        for (int gap = numbers.length / 2; gap > 0; gap /= 2){
 
+            for (int i = gap; i < numbers.length; i++){
+                int newElement = numbers[i];
+                int j = i;
 
+                while(j >= gap && numbers[j-gap] > newElement){
+                    numbers[j] = numbers[j-gap];
+                    j -= gap;
+                }
+
+                numbers[j] = newElement;
+            }
+
+        }
 
         System.out.println(Arrays.toString(numbers));
 
